@@ -1,0 +1,67 @@
+body {
+  margin: 0 auto;
+  width: 1440px;
+  background-color: beige;
+}
+
+.container {
+  max-width: 1000px;
+  background-color: bisque;
+  margin: auto;
+}
+
+.bayan {
+  width: 100%;
+}
+
+.lab {
+  height: 30px;
+  border: double 1px black;
+  border-radius: 2px;
+}
+
+.check {
+  display: none;
+}
+
+.inner_mem {
+  display: block;
+}
+
+.inner {
+  display: block;
+  height: 30px;
+  transition: all 0.5s linear;
+  overflow: hidden;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.inner:hover {
+  height: 150px;
+}
+
+.inner:active {
+  background-color: rgb(141, 150, 151);
+}
+
+.check:checked + .inner {
+  /* animation-name: click; */
+  height: 150px;
+}
+
+@keyframes click {
+  from {
+    background-color: cadetblue;
+  }
+  to {
+    background-color: rgb(255, 0, 157);
+  }
+}
+
+.state {
+  width: 20px;
+  height: 20px;
+  background: url();
+}
