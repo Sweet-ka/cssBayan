@@ -1,23 +1,64 @@
+@font-face {
+  font-family: "Comic_CAT";
+  src: url("./assets/fonts/Comic_CAT/Comic_CAT.otf");
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0 auto;
   width: 1440px;
-  background-color: beige;
+  height: 1148px;
+  background: url("./assets/back.jpeg") center center no-repeat;
+  background-size: cover;
+  font-family: "Comic_CAT", sans-serif;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+li {
+  position: relative;
+  list-style-type: none;
 }
 
 .container {
-  max-width: 1000px;
-  background-color: bisque;
+  max-width: 1220px;
+  background-color: transparent;
   margin: auto;
 }
 
 .bayan {
-  width: 100%;
+  width: 900px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: solid 4px #6b4c3845;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.bayan img {
+  height: 300px;
+  transition: transform 0.2s linear 0.5s;
 }
 
 .lab {
-  height: 30px;
-  border: double 1px black;
+  height: 50px;
+  border-top: solid 3px #6b4c3845;
   border-radius: 2px;
+  font-size: 20px;
+  text-align: left;
+  line-height: 2.5;
+  color: #6b4c38;
+}
+
+.first_lab {
+  border-top: none;
 }
 
 .check {
@@ -30,16 +71,25 @@ body {
 
 .inner {
   display: block;
-  height: 30px;
+  height: 50px;
   transition: all 0.5s linear;
   overflow: hidden;
   animation-duration: 3s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
+  text-align: center;
 }
 
 .inner:hover {
-  height: 150px;
+  height: 400px;
+}
+
+.inner:hover ~ .state {
+  transform: rotate(180deg);
+}
+
+.inner:hover img {
+  transform: scale(1.1);
 }
 
 .inner:active {
@@ -47,21 +97,34 @@ body {
 }
 
 .check:checked + .inner {
-  /* animation-name: click; */
-  height: 150px;
+  height: 400px;
 }
 
-@keyframes click {
-  from {
-    background-color: cadetblue;
-  }
-  to {
-    background-color: rgb(255, 0, 157);
-  }
+.check:checked ~ .state {
+  transform: rotate(180deg);
 }
 
 .state {
-  width: 20px;
-  height: 20px;
-  background: url();
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  background: url("./assets/unfold.png") center center no-repeat;
+  background-size: cover;
+  transition: transform 0.5s linear;
+  display: none;
+  border-radius: 50%;
+}
+
+.bayan:hover .state {
+  display: block;
+}
+
+.bayan:hover .lab {
+  color: #000;
+}
+
+.bayan img {
+  height: 300px;
 }
