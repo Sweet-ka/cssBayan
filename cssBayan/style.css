@@ -3,22 +3,48 @@
   src: url("./assets/fonts/Comic_CAT/Comic_CAT.otf");
 }
 
+:root {
+  --h_header: 9.4em;
+  --h_footer: 9.4em;
+}
+
 * {
   box-sizing: border-box;
 }
 
+p {
+  margin: 0;
+}
+
 body {
   margin: 0 auto;
-  height: calc(100vh + 400px);
-  background: url("./assets/back.jpeg") center center no-repeat;
+  background: url("./assets/realistic-old-paper-texture/6010716.jpg") center
+    center no-repeat;
   background-size: cover;
   font-family: "Comic_CAT", sans-serif;
   font-weight: normal;
 }
 
+header {
+  height: var(--h_header);
+  display: flex;
+}
+
+main {
+  height: calc(100vh - var(--h_header) - var(--h_footer));
+  min-height: 65.5em;
+}
+
+@media (pointer: coarse) {
+  main {
+    min-height: 40.5em;
+  }
+}
+
 h1 {
-  font-size: 42px;
+  font-size: 2.6em;
   text-align: center;
+  margin: 0;
 }
 
 li {
@@ -27,7 +53,8 @@ li {
 }
 
 .container {
-  max-width: 1220px;
+  width: 90%;
+  max-width: 76.25em;
   background-color: transparent;
   margin: auto;
 }
@@ -36,9 +63,9 @@ li {
   width: 80%;
   height: 100%;
   margin: 0 auto;
-  padding: 20px;
-  border: solid 4px #6b4c3845;
-  border-radius: 20px;
+  padding: 1.25em;
+  border: solid 0.25em #6b4c3845;
+  border-radius: 1.25em;
   background-color: #fff;
 }
 
@@ -47,18 +74,20 @@ li {
 }
 
 .bayan img {
-  height: 300px;
+  height: 18.75em;
   transition: transform 0.2s linear 0.5s;
 }
 
 .lab {
-  width: 70%;
-  height: 50px;
-  border-radius: 2px;
-  font-size: 20px;
+  width: 100%;
+  height: 3.125em;
+  border-radius: 0.125em;
+  font-size: 1.25em;
   text-align: left;
-  line-height: 2.5;
   color: #6b4c38;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @media (pointer: coarse) {
@@ -80,38 +109,48 @@ li {
 
 .inner {
   display: block;
-  height: 50px;
+  height: 3.125em;
   transition: all 0.5s linear;
   overflow: hidden;
   animation-duration: 3s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
   text-align: center;
-  border-top: solid 3px #6b4c3845;
+  border-top: solid 0.19em #6b4c3845;
 }
 
 .first_inner {
   border-top: none;
 }
 
-.inner:hover {
-  height: 400px;
-}
+@media (hover) {
+  .inner:hover img {
+    transform: scale(1.1);
+  }
 
-.inner:hover .state {
-  transform: rotate(180deg);
-}
+  .inner:hover {
+    height: 25em;
+  }
 
-.inner:hover img {
-  transform: scale(1.1);
+  .inner:hover .state {
+    transform: rotate(180deg);
+  }
+
+  .bayan:hover .state {
+    display: block;
+  }
+
+  .bayan:hover .lab {
+    color: #000;
+  }
 }
 
 .inner:active {
-  background-color: rgb(141, 150, 151);
+  filter: saturate(20%);
 }
 
 .check:checked + .inner {
-  height: 400px;
+  height: 25em;
 }
 
 .check:checked ~ .inner .state {
@@ -119,11 +158,8 @@ li {
 }
 
 .state {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  right: 20px;
-  top: 0;
+  width: 2.5em;
+  height: 2.5em;
   background: url("./assets/unfold.png") center center no-repeat;
   background-size: cover;
   transition: transform 0.5s linear;
@@ -137,47 +173,31 @@ li {
   }
 }
 
-.bayan:hover .state {
-  display: block;
-}
-
-.bayan:hover .lab {
-  color: #000;
-}
-
 .bayan img {
-  height: 300px;
+  height: 18.75em;
 }
 
-.girl {
-  position: absolute;
-  bottom: -400px;
-  right: 5%;
+footer {
+  height: var(--h_footer);
+  text-align: right;
 }
 
 @media screen and (max-width: 820px) {
-  body {
-    height: 100vh;
-  }
   h1 {
-    font-size: 36px;
+    font-size: 2.25em;
   }
 
   .lab {
-    font-size: 18px;
-  }
-
-  .girl {
-    bottom: 0;
+    font-size: 1.125em;
   }
 }
 
 @media screen and (max-width: 580px) {
   h1 {
-    font-size: 28px;
+    font-size: 1.75em;
   }
   .lab {
-    font-size: 16px;
+    font-size: 1em;
     line-height: 1.5;
   }
 
@@ -185,28 +205,29 @@ li {
     width: 80%;
     height: auto;
   }
+
+  .check:checked + .inner {
+    height: 70vw;
+  }
 }
 
 @media screen and (max-width: 460px) {
-  h1 {
-    font-size: 28px;
-  }
   .bayan img {
     width: 95%;
   }
   .check:checked + .inner {
-    height: 350px;
+    height: 80vw;
   }
 }
 
 @media screen and (max-width: 320px) {
   h1 {
-    font-size: 28px;
+    font-size: 1.4em;
   }
   .bayan img {
     width: 95%;
   }
-  .check:checked + .inner {
-    height: 250px;
+  p {
+    font-size: 0.7em;
   }
 }
